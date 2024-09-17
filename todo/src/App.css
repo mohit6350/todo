@@ -1,38 +1,78 @@
-.App {
+/* Parent container to structure header, cards grid, and footer */
+.Parent {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
+/* Header styling: Full width, 100px height */
+.Header {
+  width: 100%;
+  height: 50px;
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Footer styling: Full width, 100px height */
+.Footer {
+  width: 100%;
+  height: 100px;
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Card wrapper: Flex container for grid layout between header and footer */
+.Cards-Wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns grid */
+  grid-template-rows: repeat(4, 1fr); /* 4 rows grid */
+  gap: 5px; /* Space between cards */
+  flex: 1; /* Take up all available space between header and footer */
+  padding: 5px;
+  background-color: #f5f5f5;
+  box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Individual Card styling */
+.Card-Container {
+  background-color: rgb(141, 206, 22);
+  border: 2px solid black;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  height: 150px; /* Ensure the cards take up full height within the grid */
+  text-align: center;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 8px; /* Rounded corners for the card */
 }
 
-.App-link {
-  color: #61dafb;
+/* Styling for images inside the card */
+.Card-Container img {
+  width: 50px; /* Responsive width to fit within the card */
+  height: 50px; /* Fixed height for images */
+  object-fit: cover; /* Ensures the image covers the specified area */
+  border-radius: 8px; /* Rounded corners for the image */
+  margin-bottom: 8px; /* Space between the image and text */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Additional styling for text elements */
+.Card-Title {
+  font-size: 1.2em;
+  margin: 4px 0;
+}
+
+.Card-Rating,
+.Card-Year,
+.Card-Description {
+  margin: 2px 0;
 }
