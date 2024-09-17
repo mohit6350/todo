@@ -1,0 +1,38 @@
+@keyframes borderAnimation {
+    0% {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: green;
+    }
+
+    100% {
+        border-color: transparent;
+    }
+}
+button{
+    margin: 20px;
+    padding: 10px;
+}
+button:hover {
+    animation: borderAnimation 0.5s forwards;
+}
+
+button:active {
+    border-color: red;
+    box-shadow: 0 0 5px red;
+}
+
+.App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #282c34;
+    color: white;
+}
+
+.App-header {
+    text-align: center;
+}
