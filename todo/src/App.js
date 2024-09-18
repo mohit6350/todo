@@ -1,59 +1,48 @@
-import Footer from "./Components/Footer/Footer";
-import Header from "./Components/Header/Header";
-import "./App.css";
-import Cards from "./Components/Card/Cards";
 import { useEffect, useState } from "react";
+import "./App.css";
 
 function App() {
-  // State to store the movies data
-  const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-    // Function to fetch data from the API
-    const fetchMovies = async () => {
-      const url = 'https://imdb-top-100-movies.p.rapidapi.com/';
-      const options = {
-        method: 'GET',
-        headers: {
-          'x-rapidapi-key': 'e0a4f80e99msh6ffdb178daa736ep15984ejsndadfb78f61b0', // Replace with your actual RapidAPI key
-          'x-rapidapi-host': 'imdb-top-100-movies.p.rapidapi.com',
-        },
-      };
-
-      try {
-        const response = await fetch(url, options);
-        const data = await response.json();
-
-        // Log the data to understand its structure
-        console.log("API Response:", data);
-
-        // Update the state with the fetched data
-        setMovies(data);
-      } catch (error) {
-        console.error("Error fetching the movies:", error);
-      }
-    };
-
-    fetchMovies(); // Call the fetch function
-  }, []); // Empty dependency array means this effect runs once on mount
+ 
+  const [isCompleteScreen, SetIsCompleteScreen] = useState(false)
 
   return (
-    <div className="Parent">
-      <Header className="Header" />
-      <div className="Cards-Wrapper">
-        {movies.map((movie, index) => (
-          <Cards
-            key={movie.id} // Use a unique key from the movie data
-            title={movie.title}
-            rating={movie.rating}
-            year={movie.year}
-            description={movie.description} // Adding more props to show description
-            image={movie.image} // Adding more props to show image
-          />
-        ))}
+    <>
+      <div className="App">
+        <h1>My todos</h1>
+
+        <div className="todo-wraper">
+          <div className="todo-input">
+            <div className="todo-input-item">
+              <label>Title</label>
+              <input type="text" placeholder="What's your new task..."></input>
+            </div>
+            <div className="todo-input-item">
+             <label>Description</label>
+              <input type="text" placeholder="Description"></input>
+          </div>
+          <div className="todo-input-item">
+          <button type="button" className="primaryBtn">Add</button>
+          </div>
+          </div>
+
+          
+          <div className="btn-area">
+              <button className={`secondaryBtn ${isCompleteScreen===false && 'active'}`}
+              onClick={() => SetIsCompleteScreen(false)}
+              >todo</button>
+              <button className={`secondaryBtn ${isCompleteScreen===true && 'active'}`}
+              onClick={() => SetIsCompleteScreen(true)}
+              >complete</button>            
+          </div>
+          <div className="todo-list">
+            <div className="todo-list-item">
+              <h3>task 1</h3>
+              <p>Description</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <Footer className="Footer" />
-    </div>
+    </>
   );
 }
 
