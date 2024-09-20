@@ -18,23 +18,26 @@ function App() {
     let updatedTodoArr = [...allTodos];
     updatedTodoArr.push(newTodoItem);
     setAllTodos(updatedTodoArr);
-    localStorage.setItem('todo-list',JSON.stringify(updatedTodoArr))
+    localStorage.setItem("todo-list", JSON.stringify(updatedTodoArr));
   };
 
-  useEffect(()=>{
-    let savedTodo = JSON.parse(localStorage.getItem('todo-list'))
-    if(savedTodo){
-      setAllTodos(savedTodo)
+  useEffect(() => {
+    let savedTodo = JSON.parse(localStorage.getItem("todo-list"));
+    if (savedTodo) {
+      setAllTodos(savedTodo);
     }
-  },[])
+  }, []);
 
   const deleteTodoItem = (index) => {
-    let oldTodoArr = [...allTodos]
-    oldTodoArr.splice(index,1)
+    let oldTodoArr = [...allTodos];
+    oldTodoArr.splice(index, 1);
 
-    localStorage.setItem('todo-list',JSON.stringify(oldTodoArr))
-    setAllTodos(oldTodoArr)
+    localStorage.setItem("todo-list", JSON.stringify(oldTodoArr));
+    setAllTodos(oldTodoArr);
+  };
 
+  const resetAllTodo = () => {
+    setAllTodos([])
   }
 
   return (
@@ -71,6 +74,15 @@ function App() {
                 Add
               </button>
             </div>
+            <div>
+            <button
+                type="button"
+                onClick={resetAllTodo}
+                className="resetBtn"
+              >
+                Reset
+              </button>
+            </div>
           </div>
 
           <div className="btn-area">
@@ -100,7 +112,10 @@ function App() {
                     <p>{item.description}</p>
                   </div>
                   <div>
-                    <AiOutlineDelete className="icon" onClick={()=>deleteTodoItem(index)}/>
+                    <AiOutlineDelete
+                      className="icon"
+                      onClick={() => deleteTodoItem(index)}
+                    />
                     <BsCheckLg className="check-icon" />
                   </div>
                 </div>

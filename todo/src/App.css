@@ -22,6 +22,7 @@ h1{
 
 .todo-input{
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid grey;
@@ -46,7 +47,6 @@ h1{
   padding: 8px;
   border: none;
   width: 250px;
-
 }
 
 .todo-input-item input:focus{
@@ -58,10 +58,27 @@ h1{
   color: white;
   border: none;
   border-radius: 0px;
-  margin-top: 25px;
+  margin-top: 32px;
   padding: 10px;
   width: 60px;
   cursor: pointer;
+  font-weight: bold;
+}
+
+.resetBtn{
+  background-color: rgb(211, 44, 114);
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 0px;
+  margin-top: 32px;
+  padding: 10px;
+  width: 60px;
+  cursor: pointer;
+}
+
+.resetBtn:hover{
+  background-color: rgb(151, 38, 85);
 }
 
 .primaryBtn:hover{
